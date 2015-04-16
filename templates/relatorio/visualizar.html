@@ -1,0 +1,31 @@
+<div ng-controller="relatorioVisualizar" layout="column" class="md-whiteframe-z1" style="width: 50%; margin: 30px auto;">
+    <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+        <h2> <span style='color: #FFF;'>{{enquete.enquete.vhr_nome}}</span> </h2>
+    </md-content>
+
+    <div style="margin: 6px; padding: 10px;" >
+        {{enquete.enquete.vhr_descricao}}<br /><br />
+        <div ng-repeat="(i, p) in enquete.pergunta" style="margin-bottom: 10px;" class="md-whiteframe-z1">
+            
+            <md-toolbar class="md-theme-light">
+                <h2 class="md-toolbar-tools">
+                  <span>{{p.int_ordem}}) {{p.vhr_titulo}}</span>
+                  <span flex></span>
+                  {{somaTotal(totalVotosPergunta[i])}}&nbsp;<span ng-if="totais <= 1"> Voto</span> <span ng-if="totais > 1"> Votos</span>
+                </h2>
+            </md-toolbar>
+            
+            <md-radio-group ng-model="selecionado[i]">
+                <div ng-repeat="(j, r) in enquete.opcao[i]">
+                    <span ng-model="totalVotosPergunta[i][j] = (r.qtde_voto)"></span>
+                    <md-radio-button disabled value="{{r.qtde_voto}}" class="md-primary">{{r.vhr_titulo}} - {{(r.qtde_voto/totais) * 100 | number:0 || 0}}%  ({{r.qtde_voto}}) </md-radio-button>
+                    <md-slider flex md-discrete step="1" ng-model="(r.qtde_voto/totais) * 100 | number:0 || 0" aria-label=""></md-slider> 
+                </div>
+            </md-radio-group>
+            
+        </div> 
+        
+    </div>
+   
+</div>
+

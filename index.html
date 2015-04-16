@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="enquete">
+    <head>
+        <meta name="theme-color" content="#394fc7">
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css">
+
+        <script src="./bower_components/angular/angular.js"></script>
+        <script src="./bower_components/angular-aria/angular-aria.js"></script>
+        <script src="./bower_components/angular-animate/angular-animate.js"></script>
+        <script src="./bower_components/angular-material/angular-material.js"></script>
+        
+    </head>
+
+    <body ng-controller="AppCtrl">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <div ng-show="location.path() != '/'">
+                        <md-button class="md-icon-button" aria-label="Home" ng-click="voltar()">
+                            <md-icon md-svg-icon="img/icones/keyboard-backspace.svg"></md-icon>
+                        </md-button>
+                    </div>
+                    <h2>
+                        <span>{{tituloBarra}}</span>
+                    </h2>
+                </div>
+            </md-toolbar>
+    
+            <div ng-view></div>
+
+        <div >
+            <md-content id="FAB" style="position: fixed; right:30px; bottom: 30px;">
+                <section layout="row" layout-sm="column" layout-align="center center">
+                    <md-button class="md-fab md-primary" aria-label="Novo" title="{{tituloFAB}}" ng-click="mostrarMenu($event)">
+                        <md-icon md-svg-src="img/icones/menu.svg"></md-icon>
+                    </md-button>
+                </section>
+            </md-content>
+
+        </div>
+
+        <script src="./scripts/angular-config.js"></script>
+        <script src="./scripts/service/requisicaoService.js"></script>
+        <script src="./scripts/controller/enqueteController.js"></script>
+        <script src="./scripts/controller/relatorioController.js"></script>
+        <script src="./scripts/angular-route.js"></script>
+    </body>
+</html>

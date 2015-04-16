@@ -1,0 +1,35 @@
+<md-dialog ng-controller="FormEnquete" aria-label="Mango (Fruit)" style="width: 40%;">
+    <md-content class="sticky-container">
+        <md-subheader class="md-sticky-no-effect"><center> {{pergunta.titulo}} </center></md-subheader>
+        
+        <div class="dialog-content">
+            <md-content layout-padding layout="column" layout-sm="column">
+                <md-input-container>
+                    <label>Pergunta</label>
+                    <input ng-model="pergunta.titulo">
+                </md-input-container>
+                
+                <div ng-repeat="(i, data) in respostas">
+                    <md-input-container style="width: 90%; float:left;">
+                        <label>Resposta {{i+1}}</label>
+                        <input ng-model="pergunta.opcao[i]" ng-disabled="!pergunta.titulo">
+                    </md-input-container>
+                    <md-button class="md-warn" ng-disabled="!pergunta.titulo" ng-click="removerResposta(i)" style="width: 10%; float:left; margin-top: 15px;"><md-icon md-svg-icon="img/icones/minus.svg"></md-icon></md-button>
+                </div>
+                
+            </md-content>
+            
+            <md-button class="md-raised md-primary" ng-disabled="!pergunta.titulo" ng-click="addResposta()">+ Resposta</md-button> 
+        </div>
+    </md-content>
+    
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="answer('')">
+            Cancelar
+        </md-button>
+        <md-button ng-disabled="!pergunta.titulo" ng-click="answer(pergunta)" class="md-primary">
+            Adicionar
+        </md-button>
+    </div>
+</md-dialog>

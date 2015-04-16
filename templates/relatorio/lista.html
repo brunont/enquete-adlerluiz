@@ -1,0 +1,13 @@
+<div ng-controller="relatorio"> 
+    <div ng-repeat="enquete in lista" class="md-whiteframe-z1" style="width: 31%; float: left; margin: 1%; padding: 5px;" ng-style="{'background': '#009688'}">
+        <center>
+        <h2>{{enquete.vhr_nome}}</h2>
+        <h5>{{enquete.vhr_descricao}}</h5>
+        <h4><md-button class='md-raised' ng-click='visualizar(enquete.int_idaenquete)'>Visualizar Relatório</md-button></h4>
+        </center>
+    </div>
+    
+    <div ng-show="!lista" class="md-whiteframe-z1" style="width: 30%; margin: 20px auto 0; padding: 5px;">
+        <center>Nenhum relatório encontrado!</center>
+    </div>
+</div>

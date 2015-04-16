@@ -1,0 +1,52 @@
+<div ng-controller="EnqueteEditar" layout="column" class="md-whiteframe-z1" style="width: 50%; margin: 30px auto;">
+    <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+        <md-input-container style="width:100%">
+            <label>Nome da Enquete</label>
+            <input ng-model="enquete.enquete.vhr_nome">
+        </md-input-container>
+    </md-content>
+
+    <div style="margin: 6px; padding: 10px;">
+        
+        <md-input-container>
+            <label>Descrição da Enquete</label>
+            <input ng-model="enquete.enquete.vhr_descricao">
+        </md-input-container>
+        
+        <div ng-repeat="(i, p) in enquete.pergunta" style="margin-bottom: 10px;" class="md-whiteframe-z1">
+            
+            <md-toolbar class="md-theme-light">
+                <h2 class="md-toolbar-tools">
+                <span>{{p.int_ordem}})</span>
+                
+                <md-input-container style="width:100%; margin-bottom: -15px;">
+                    <label>Pergunta</label>
+                    <input ng-model="p.vhr_titulo" style="color: white;">
+                </md-input-container>
+                
+                </h2>
+            </md-toolbar>
+            
+            <md-radio-group ng-model="selecionado[i]">
+                <div ng-repeat="(i, r) in enquete.opcao[i]">
+                 
+                    <md-input-container style="width:100%; margin-bottom: -15px;">
+                        <label>Resposta {{i+1}}</label>
+                        <input ng-model="r.vhr_titulo">
+                    </md-input-container>
+                    
+                </div>
+            </md-radio-group>
+            
+        </div>
+        
+    </div>
+   
+    <md-divider></md-divider>
+    
+    <section layout="row" layout-sm="row" layout-align="center center" style="padding: 6px;">
+        <md-button class="md-raised" ng-click="salvar();"><md-icon md-svg-icon="img/icones/content-save.svg"></md-icon> Salvar Edição</md-button>
+    </section>
+   
+</div>
+

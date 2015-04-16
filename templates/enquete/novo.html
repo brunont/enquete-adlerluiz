@@ -1,0 +1,50 @@
+<div ng-controller="FormEnquete" layout="column" class="md-whiteframe-z1" style="width: 50%; margin: 20px auto;">
+    <md-content md-theme="docs-dark" layout-padding layout="column" layout-sm="column">
+        <md-input-container style="width:70%">
+            <label>Título da Enquete</label>
+            <input ng-model="tituloEnquete">
+        </md-input-container>
+        
+        <md-input-container style="width:70%">
+            <label>Descrição da Enquete</label>
+            <input ng-model="descricaoEnquete">
+        </md-input-container>
+    </md-content>
+
+    <div style="margin: 6px; padding: 10px;" >
+        <div ng-repeat="(i, pergunta) in enquete" style="margin-bottom: 10px;" class="md-whiteframe-z1">
+            
+            <md-toolbar class="md-theme-light">
+                <h2 class="md-toolbar-tools">
+                  <span>{{i+1}}) {{pergunta.titulo}}</span>
+                  <span flex></span>
+                  <md-button class="md-raised md-warn" title="Remover Pergunta" ng-click="removerPergunta(i)"> <span style="font-size: 0.6em;"> <md-icon md-svg-icon="img/icones/minus.svg"></md-icon></span> </md-button>
+                </h2>
+            </md-toolbar>
+            
+            <md-radio-group ng-model="data.group1">
+                <div ng-repeat="(j, resposta) in pergunta.opcao">
+                    <!--div id="{{j}}">{{resposta}}</div-->
+                <md-radio-button value="{{j}}" class="md-primary">{{resposta}}</md-radio-button>
+                </div>
+            </md-radio-group>
+            <md-divider ng-if="!$last"></md-divider>
+        </div>
+        
+    </div>
+
+   
+    <section layout="row" layout-sm="row" layout-align="center center">
+        <md-button class="md-raised" ng-click="showAdvanced($event)"><md-icon md-svg-icon="img/icones/plus.svg"></md-icon> Pergunta</md-button>
+    </section>
+    
+    <br />
+    <md-divider></md-divider>
+    
+    <section layout="row" layout-sm="row" layout-align="center center" style="padding: 6px;">
+        <span flex></span>
+        <md-button class="md-raised" ng-click="salvar()"><md-icon md-svg-icon="img/icones/content-save.svg"></md-icon> Salvar</md-button>
+    </section>
+   
+</div>
+

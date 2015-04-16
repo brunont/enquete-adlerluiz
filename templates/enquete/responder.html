@@ -1,0 +1,35 @@
+<div ng-controller="enqueteResposta" layout="column" class="md-whiteframe-z1" style="width: 50%; margin: 30px auto;">
+    <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+        <h2> <span style='color: #FFF;'>{{enquete.enquete.vhr_nome}}</span> </h2>
+    </md-content>
+
+    <div style="margin: 6px; padding: 10px;" >
+        {{enquete.enquete.vhr_descricao}}<br /><br />
+        <div ng-repeat="(i, p) in enquete.pergunta" style="margin-bottom: 10px;" class="md-whiteframe-z1">
+            
+            <md-toolbar class="md-theme-light">
+                <h2 class="md-toolbar-tools">
+                  <span>{{p.int_ordem}}) {{p.vhr_titulo}}</span>
+                  <span flex></span>
+                </h2>
+            </md-toolbar>
+            
+            <md-radio-group ng-model="selecionado[i]">
+                <div ng-repeat="r in enquete.opcao[i]">
+                    <!--div id="{{j}}">{{resposta}}</div-->
+                    <md-radio-button value="{{r.int_idaopcao}}" class="md-primary">{{r.vhr_titulo}}</md-radio-button>
+                </div>
+            </md-radio-group>
+            
+        </div>
+        
+    </div>
+   
+    <md-divider></md-divider>
+    
+    <section layout="row" layout-sm="row" layout-align="center center" style="padding: 6px;">
+        <md-button class="md-raised" ng-click="salvar();"><md-icon md-svg-icon="img/icones/content-save.svg"></md-icon> Salvar</md-button>
+    </section>
+   
+</div>
+
