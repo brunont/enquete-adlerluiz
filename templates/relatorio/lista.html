@@ -1,5 +1,5 @@
 <div ng-controller="relatorio"> 
-    <div ng-repeat="enquete in lista" class="md-whiteframe-z1" style="width: 31%; float: left; margin: 1%; padding: 5px;" ng-style="{'background': '#009688'}">
+    <div ng-repeat="enquete in lista track by $index" class="md-whiteframe-z1" style="width: 31%; float: left; margin: 1%; padding: 5px;" ng-style="{'background': '#009688'}">
         <center>
         <h2>{{enquete.vhr_nome}}</h2>
         <h5>{{enquete.vhr_descricao}}</h5>
