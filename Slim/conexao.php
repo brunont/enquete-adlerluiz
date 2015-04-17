@@ -3,7 +3,7 @@
 class conexaoClass {
     private $DB_HOST = 'localhost';
     private $DB_USER = 'root';
-    private $DB_PASS = 'Al100391';
+    private $DB_PASS = '';
 
     public $MYSQLI;
     public $STMT;
